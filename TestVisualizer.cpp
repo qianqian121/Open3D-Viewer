@@ -27,25 +27,13 @@
 #include <iostream>
 #include <memory>
 #include <thread>
-#include <thread>
 
-#include <Core/Core.h>
-#include "IO/IO.h"
-#include "Visualization/Visualization.h"
+#include <open3d/Open3D.h>
 
-#include "auto_visualize.h"
-
-using namespace open3d;
-
-int main(int argc, char* argv[]) {
-    SetVerbosityLevel(VerbosityLevel::VerboseAlways);
-    if (argc < 2) {
-        PrintOpen3DVersion();
-        PrintInfo("Usage: Visualizer [filename]\n");
-        std::this_thread::sleep_for(std::chrono::seconds(5));
-        return 1;
-    }
-
-    std::string file_name(argv[1]);
-    return auto_visualize(file_name) ? 0 : 1;
+int main(int argc, char *argv[]) {
+  auto sphere = open3d::geometry::TriangleMesh::CreateSphere(1.0);
+  sphere->ComputeVertexNormals();
+  sphere->PaintUniformColor({0.0, 1.0, 0.0});
+  open3d::visualization::DrawGeometries({sphere});
+  return 0;
 }

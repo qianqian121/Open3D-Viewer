@@ -1,0 +1,17 @@
+set(open3d_install_prefix "/usr/local")
+
+message(STATUS ${open3d_install_prefix})
+
+find_package(Open3D HINTS ${open3d_install_prefix}/lib/cmake/Open3D)
+if (Open3D_FOUND)
+    message(STATUS "Found Open3D at ${Open3D_LIBRARY_DIRS}")
+    set(Open3D_FOUND ${Open3D_FOUND})
+    set(Open3D_INCLUDE_DIRS ${Open3D_INCLUDE_DIRS})
+    set(Open3D_LIBRARY_DIRS ${Open3D_LIBRARY_DIRS})
+    set(Open3D_LIBRARIES ${Open3D_LIBRARIES})
+    set(Open3D_C_FLAGS ${Open3D_C_FLAGS})
+    set(Open3D_CXX_FLAGS ${Open3D_CXX_FLAGS})
+    set(Open3D_EXE_LINKER_FLAGS ${Open3D_EXE_LINKER_FLAGS})
+else ()
+    message(FATAL_ERROR "Open3D build was not successful")
+endif ()

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 project(open3d_viewer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/usr/local/lib/cmake/Open3D")
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
